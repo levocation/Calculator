@@ -133,6 +133,7 @@ public class CalClass {
 		
 		if (this.isCalculated()) { 
 			this.setOperator(operator);
+			
 			return;
 		}
 		

@@ -16,7 +16,8 @@ import java.awt.event.ActionEvent;
 public class Calculator extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField txt_input;
+	private JTextField txt_cal_formula;
 
 	/**
 	 * Launch the application.
@@ -44,14 +45,19 @@ public class Calculator extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setFont(new Font("Arial", Font.BOLD, 45));
-		textField.setHorizontalAlignment(SwingConstants.RIGHT);
-		textField.setText("0");
-		textField.setBounds(0, 10, 334, 70);
-		contentPane.add(textField);
+		txt_input = new JTextField();
+		txt_input.setEditable(false);
+		txt_input.setFont(new Font("Arial", Font.BOLD, 45));
+		txt_input.setHorizontalAlignment(SwingConstants.RIGHT);
+		txt_input.setText("0");
+		txt_input.setBounds(0, 35, 334, 52);
+		contentPane.add(txt_input);
 		contentPane.setLayout(null);
+		
+		txt_cal_formula = new JTextField();
+		txt_cal_formula.setBounds(0, 0, 334, 25);
+		contentPane.add(txt_cal_formula);
+		txt_cal_formula.setColumns(10);
 
 		CalClass cal = new CalClass();
 
@@ -77,56 +83,60 @@ public class Calculator extends JFrame {
 							cal.setOperator("%");
 						} else if (btn_name.equals("C")) {
 							cal.setInput(cal.to_string(0));
-							cal.setTextField(textField, cal.getInput());
+							cal.setTextField(txt_input, cal.getInput());
 						} else if (btn_name.equals("CE")) {
 							cal.reset();
-							cal.setTextField(textField, cal.getInput());
+							cal.setTextField(txt_input, cal.getInput());
 						} else if (btn_name.equals("DE")) {
 							cal.popInput();
 						} else if (btn_name.equals("÷")) {
 
 							//--------------------
 							cal.calculate("÷");
-							cal.setTextField(textField, cal.getValue());
+							cal.setTextField(txt_input, cal.getValue());
+							cal.setTextField(txt_cal_formula, cal.getCal_formula());
 							
 						} else if (btn_name.equals("√")) {
 							cal.setCalculated(true);
 							cal.setInput(Math.sqrt(cal.stod(cal.getInput())));
 							cal.setValue(cal.getInput());
-							cal.setTextField(textField, cal.getInput());
+							cal.setTextField(txt_input, cal.getInput());
 						} else if (btn_name.equals("×")) {
 
 							//--------------------
 							cal.calculate("×");
-							cal.setTextField(textField, cal.getValue());
+							cal.setTextField(txt_input, cal.getValue());
+							cal.setTextField(txt_cal_formula, cal.getCal_formula());
 							
 						} else if (btn_name.equals("x²")) {
 							cal.setCalculated(true);
 							cal.setInput(Math.pow(cal.stod(cal.getInput()), 2));
 							cal.setValue(cal.getInput());
-							cal.setTextField(textField, cal.getInput());
+							cal.setTextField(txt_input, cal.getInput());
 						} else if (btn_name.equals("－")) {
 							
 							//--------------------
 							cal.calculate("－");
-							cal.setTextField(textField, cal.getValue());
+							cal.setTextField(txt_input, cal.getValue());
+							cal.setTextField(txt_cal_formula, cal.getCal_formula());
 							
 						} else if (btn_name.equals("x³")) {
 							cal.setCalculated(true);
 							cal.setInput(Math.pow(cal.stod(cal.getInput()), 3));
 							cal.setValue(cal.getInput());
-							cal.setTextField(textField, cal.getInput());
+							cal.setTextField(txt_input, cal.getInput());
 						} else if (btn_name.equals("＋")) {
 
 							//--------------------
 							cal.calculate("＋");
-							cal.setTextField(textField, cal.getValue());
+							cal.setTextField(txt_input, cal.getValue());
+							cal.setTextField(txt_cal_formula, cal.getCal_formula());
 							
 						} else if (btn_name.equals("¹⁄ₓ")) {
 							cal.setCalculated(true);
 							cal.setInput(1.0 / cal.stod(cal.getInput()));
 							cal.setValue(cal.getInput());
-							cal.setTextField(textField, cal.getInput());
+							cal.setTextField(txt_input, cal.getInput());
 						} else if (btn_name.equals("±")) {
 							if (cal.stod(cal.getInput()) != Double.parseDouble("0")) {
 								if (cal.getInput().contains("-")) {
@@ -134,18 +144,18 @@ public class Calculator extends JFrame {
 								} else {
 									cal.setInput("-" + cal.getInput());
 								}
-								cal.setTextField(textField, cal.getInput());
+								cal.setTextField(txt_input, cal.getInput());
 							}
 						} else if (btn_name.equals(".")) {
 							if (!cal.getInput().contains(".")) {
 								cal.setInput(cal.getInput() + ".");
-								cal.setTextField(textField, cal.getInput());
+								cal.setTextField(txt_input, cal.getInput());
 							}
 						} else if (btn_name.equals("=")) {
 							
 						} else {
 							cal.pushInput(Integer.parseInt(e.getActionCommand()));
-							cal.setTextField(textField, cal.getInput());
+							cal.setTextField(txt_input, cal.getInput());
 						}
 					}
 				});
