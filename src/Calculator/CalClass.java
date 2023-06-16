@@ -150,35 +150,33 @@ public class CalClass {
 		
 		if (operator.equals("=")) {
 			char ch = this.getInput().charAt(0);
-			System.out.println("ch = " + ch);
+			//System.out.println("ch = " + ch);
 			if (ch >= '0' && ch <= '9') {
-				System.out.println("TRUE");
 				this.calculate(this.getOperator());
 			} else {
-				System.out.println("FALSE");
-				this.setCalculated(true);
 				this.setCal_formula(this.getCal_formula().substring(0, this.getCal_formula().length() - 1));
 			}
+			this.setCalculated(true);
 			return;
 		}
 		
 		if (this.getOperator().equals("гл")) {
-			this.setValue(this.to_string(this.stod(this.getInput()) + this.stod(this.getValue())));
-			//System.out.println(this.stod(this.getInput()) + "+" + this.stod(this.getValue()));
+			this.setValue(this.to_string(this.stod(this.getValue()) + this.stod(this.getInput())));;
+			//System.out.println(this.stod(this.getValue()) + "+" + this.stod(this.getInput()));
 			this.setCalculated(true);
 		} else if (this.getOperator().equals("гн")) {
-			this.setValue(this.to_string(this.stod(this.getInput()) - this.stod(this.getValue())));
-			//System.out.println(this.stod(this.getInput()) + "-" + this.stod(this.getValue()));
+			this.setValue(this.to_string(this.stod(this.getValue()) - this.stod(this.getInput())));
+			//System.out.println(this.stod(this.getValue()) + "-" + this.stod(this.getInput()));
 			this.setCalculated(true);
 			
 		} else if (this.getOperator().equals("б┐")) {
-			this.setValue(this.to_string(this.stod(this.getInput()) * this.stod(this.getValue())));
-			//System.out.println(this.stod(this.getInput()) + "x" + this.stod(this.getValue()));
+			this.setValue(this.to_string(this.stod(this.getValue()) * this.stod(this.getInput())));;
+			//System.out.println(this.stod(this.getValue()) + "*" + this.stod(this.getInput()));
 			this.setCalculated(true);
 			
 		} else if (this.getOperator().equals("б└")) {
-			this.setValue(this.to_string(this.stod(this.getInput()) / this.stod(this.getValue())));
-			//System.out.println(this.stod(this.getInput()) + "/" + this.stod(this.getValue()));
+			this.setValue(this.to_string(this.stod(this.getValue()) / this.stod(this.getInput())));;
+			//System.out.println(this.stod(this.getValue()) + "/" + this.stod(this.getInput()));
 			this.setCalculated(true);
 		}
 		this.setOperator(operator);

@@ -155,7 +155,7 @@ public class Calculator extends JFrame {
 						} else if (btn_name.equals("=")) {
 							cal.calculate("=");
 							cal.setTextField(txt_input, cal.getValue());
-							cal.setCalFormula(txt_cal_formula, "");
+							cal.setCalFormula(txt_cal_formula, cal.getCal_formula());
 						} else {
 							cal.pushInput(Integer.parseInt(e.getActionCommand()));
 							cal.setTextField(txt_input, cal.getInput());
