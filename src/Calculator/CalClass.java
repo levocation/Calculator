@@ -76,6 +76,10 @@ public class CalClass {
 		return false;
 	}
 	
+	public void setCalFormula(JTextField textField, String input) {
+		textField.setText(input);
+	}
+	
 	public void setTextField(JTextField textField, String input) {
 		if (this.getInput().charAt(this.getInput().length() - 1) == '.') {
 			if (this.isCalculated()) {
@@ -90,7 +94,7 @@ public class CalClass {
 		} else {
 			textField.setText(Integer.toString((int)this.stod(input)));
 		}
-		System.out.println(this.getInput());
+		//System.out.println(this.getInput());
 	}
 	
 	public void pushInput(int num) {
@@ -141,6 +145,20 @@ public class CalClass {
 			this.setValue(this.getInput());
 			this.setCalculated(true);
 			this.setOperator(operator);
+			return;
+		}
+		
+		if (operator.equals("=")) {
+			char ch = this.getInput().charAt(0);
+			System.out.println("ch = " + ch);
+			if (ch >= '0' && ch <= '9') {
+				System.out.println("TRUE");
+				this.calculate(this.getOperator());
+			} else {
+				System.out.println("FALSE");
+				this.setCalculated(true);
+				this.setCal_formula(this.getCal_formula().substring(0, this.getCal_formula().length() - 1));
+			}
 			return;
 		}
 		

@@ -55,6 +55,7 @@ public class Calculator extends JFrame {
 		contentPane.setLayout(null);
 		
 		txt_cal_formula = new JTextField();
+		txt_cal_formula.setHorizontalAlignment(SwingConstants.RIGHT);
 		txt_cal_formula.setBounds(0, 0, 334, 25);
 		contentPane.add(txt_cal_formula);
 		txt_cal_formula.setColumns(10);
@@ -94,7 +95,7 @@ public class Calculator extends JFrame {
 							//--------------------
 							cal.calculate("÷");
 							cal.setTextField(txt_input, cal.getValue());
-							cal.setTextField(txt_cal_formula, cal.getCal_formula());
+							cal.setCalFormula(txt_cal_formula, cal.getCal_formula());
 							
 						} else if (btn_name.equals("√")) {
 							cal.setCalculated(true);
@@ -106,7 +107,7 @@ public class Calculator extends JFrame {
 							//--------------------
 							cal.calculate("×");
 							cal.setTextField(txt_input, cal.getValue());
-							cal.setTextField(txt_cal_formula, cal.getCal_formula());
+							cal.setCalFormula(txt_cal_formula, cal.getCal_formula());
 							
 						} else if (btn_name.equals("x²")) {
 							cal.setCalculated(true);
@@ -118,7 +119,7 @@ public class Calculator extends JFrame {
 							//--------------------
 							cal.calculate("－");
 							cal.setTextField(txt_input, cal.getValue());
-							cal.setTextField(txt_cal_formula, cal.getCal_formula());
+							cal.setCalFormula(txt_cal_formula, cal.getCal_formula());
 							
 						} else if (btn_name.equals("x³")) {
 							cal.setCalculated(true);
@@ -130,7 +131,7 @@ public class Calculator extends JFrame {
 							//--------------------
 							cal.calculate("＋");
 							cal.setTextField(txt_input, cal.getValue());
-							cal.setTextField(txt_cal_formula, cal.getCal_formula());
+							cal.setCalFormula(txt_cal_formula, cal.getCal_formula());
 							
 						} else if (btn_name.equals("¹⁄ₓ")) {
 							cal.setCalculated(true);
@@ -152,7 +153,9 @@ public class Calculator extends JFrame {
 								cal.setTextField(txt_input, cal.getInput());
 							}
 						} else if (btn_name.equals("=")) {
-							
+							cal.calculate("=");
+							cal.setTextField(txt_input, cal.getValue());
+							cal.setCalFormula(txt_cal_formula, "");
 						} else {
 							cal.pushInput(Integer.parseInt(e.getActionCommand()));
 							cal.setTextField(txt_input, cal.getInput());
